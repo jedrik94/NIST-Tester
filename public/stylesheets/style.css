@@ -1,0 +1,119 @@
+.btn:focus, .upload-btn:focus {
+    outline: 0 !important;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #4791D2;
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body {
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+    font-family: 'Raleway', sans-serif;
+}
+
+.row {
+    margin-top: 80px;
+}
+
+.nav-row {
+    margin-top: 10px;
+}
+
+.upload-btn {
+    margin: 4px;
+    color: #ffffff;
+    background-color: #F89406;
+    border: none;
+}
+
+.upload-btn:hover,
+.upload-btn:focus,
+.upload-btn:active,
+.upload-btn.active {
+    color: #ffffff;
+    background-color: #FA8900;
+    border: none;
+}
+
+.site-wrapper {
+    display: table;
+    width: 100%;
+    height: 100%; /* For at least Firefox */
+    min-height: 100%;
+    -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+}
+
+.site-wrapper-inner {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.cover-container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.inner-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.mastfoot {
+    color: #999; /* IE8 proofing */
+    color: rgba(255, 255, 255, .5);
+    bottom: 0;
+    width: 100%;
+}
+
+.inner {
+    padding: 30px;
+}
+
+h4 {
+    padding-bottom: 30px;
+    color: #B8BDC1;
+}
+
+.glyphicon {
+    font-size: 5em;
+    color: #9CA3A9;
+}
+
+h2 {
+    margin-top: 15px;
+    color: #68757E;
+}
+
+.panel {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#upload-input {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .main-container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .cover-container {
+        width: 90%;
+    }
+
+    .container {
+        width: 450px;
+    }
+
+}

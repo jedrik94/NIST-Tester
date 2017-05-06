@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title><%= title %></title>
+    <link href="/favicon.ico" rel="icon">
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="nav-row">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">NIST Tester</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="/">Home</a></li>
+                                <li><a href="/analyze">Analyze</a></li>
+                                <li><a href="/about">About</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="container">
+                <div class="inner-container">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ice-lolly"></span>
+                                <h2>Upload file with bitstream</h2>
+                                <h4>pl.jedrik94.nist.web.tester</h4>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar"></div>
+                                </div>
+                                <button class="btn btn-lg upload-btn" type="button" id="upload-button"
+                                        data-toggle="tooltip" data-placement="bottom"
+                                        title="Obligatory type: .bit or .txt, size: <25MB!">Choose File
+                                </button>
+                                <button class="btn btn-lg upload-btn" type="submit" id="submit-upload">Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="inner-container">
+                    <a href="/analyze">
+                        <button type="button" id="analyzeWithFile" class="btn btn-primary btn-lg btn-block" disabled>
+                            Analyze input file
+                        </button>
+                    </a>
+                </div>
+
+                <div class="alert alert-danger" id="upload-warning" hidden>
+                    <strong>Warning!</strong>
+                    <p id="warning"> Something went wrong!</p>
+                </div>
+
+                <div class="alert alert-success" id="upload-success" hidden>
+                    <strong>Success!</strong>
+                    <p id="info"> Something went wrong!</p>
+                </div>
+
+            </div>
+
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p><strong>Created by </strong><a href="https://twitter.com/saski124">@saski124.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+<input id="upload-input" type="file" name="uploads[]">
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="javascripts/upload.js"></script>
+</body>
+</html>

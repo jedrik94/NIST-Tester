@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title><%= title %></title>
+    <link href="/favicon.ico" rel="icon">
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="nav-row">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">NIST Tester</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li><a href="/">Home</a></li>
+                                <li class="active"><a href="/analyze">Analyze</a></li>
+                                <li><a href="/about">About</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="main-container">
+                <div class="inner-container">
+                    <h1 class="cover-heading" data-toggle="tooltip"
+                        data-placement="bottom" title=""
+                        data-original-title="Here you can choose any of predefined pseudo-generators instead of uploaded file!">
+                        Generator Selection
+                    </h1>
+                </div>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Data Source</th>
+                        <th>#</th>
+                        <th>Data Source</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <th>
+                            <div class="radio disabled">
+                                <label>
+                                    <input type="radio" name="generatorSelection" id="genSel0" value="0" disabled>
+                                    Input File with bit series
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">6</th>
+                        <th>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="generatorSelection" id="genSel5" value="5">
+                                    XOR
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <th>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="generatorSelection" id="genSel1" value="1" checked>
+                                    Linear Congruential
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">7</th>
+                        <th>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="generatorSelection" id="genSel6" value="6">
+                                    Modular Exponentiation
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <th>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="generatorSelection" id="genSel2" value="2">
+                                    Quadratic Congruential I
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">8</th>
+                        <th>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="generatorSelection" id="genSel7" value="7">
+                                    Blum-Blum-Shub
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <th>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="generatorSelection" id="genSel3" value="3">
+                                    Quadratic Congruential II
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">9</th>
+                        <th>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="generatorSelection" id="genSel8" value="8">
+                                    Micali-Schnorr
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <th>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="generatorSelection" id="genSel4" value="4">
+                                    Cubic Congruential
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">10</th>
+                        <th>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="generatorSelection" id="genSel9" value="9">
+                                    G Using SHA-1
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-info" id="upload-info-analyze">
+                    <strong>Info!</strong>
+                    <p id="info-analyze-file"> Something went wrong!</p>
+                </div>
+
+                <div class="row">
+                    <h1 class="cover-heading" data-toggle="tooltip"
+                        data-placement="bottom" title=""
+                        data-original-title="Check tests to be used in analyze (if not every needed)!">
+                        Test Selection
+                    </h1>
+                </div>
+
+                <div class="inner-container">
+                    <label class="radio-inline">
+                        <input type="radio" name="everyTest" id="allTests" value="1" checked>
+                        Every single test
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="everyTest" id="notAllTests" value="0">
+                        Let's me choose tests
+                    </label>
+                </div>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Test</th>
+                        <th>#</th>
+                        <th>Test</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test1" value="1" disabled checked>
+                                    Frequency
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">9</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test9" value="9" disabled checked>
+                                    Overlapping Template Matchings
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test2" value="2" disabled checked>
+                                    Block Frequency
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">10</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test10" value="10" disabled
+                                           checked>
+                                    Universal Statistical
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test3" value="3" disabled checked>
+                                    Cumulative Sums
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">11</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test11" value="11" disabled
+                                           checked>
+                                    Approximate Entropy
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test4" value="4" disabled checked>
+                                    Runs
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">12</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test12" value="12" disabled
+                                           checked>
+                                    Random Excursions
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test5" value="5" disabled checked>
+                                    Longest Run of Ones
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">13</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test13" value="13" disabled
+                                           checked>
+                                    Random Excursions Variant
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test6" value="6" disabled checked>
+                                    Rank
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">14</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test14" value="14" disabled
+                                           checked>
+                                    Serial
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test7" value="7" disabled checked>
+                                    Discrete Fourier Transform
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row">14</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test15" value="15" disabled
+                                           checked>
+                                    Linear Complexity
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="testsSelection" id="test8" value="8" disabled checked>
+                                    Nonperiodic Template Matchings
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="row"></th>
+                        <th></th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="main-container">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="number" min="1" class="form-control" id="lengthInput"
+                                   data-toggle="tooltip"
+                                   data-placement="bottom" title=""
+                                   data-original-title="Value have to be greater than 0."
+                                   placeholder="Length of bitstream fetched from source">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="lengthBit">Check!</button>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="number" min="1" class="form-control" id="amountInput"
+                                   data-toggle="tooltip"
+                                   data-placement="bottom" title=""
+                                   data-original-title="Value have to be greater than 0."
+                                   placeholder="Amount of bitstreams used during testing">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="amountBit">Check!</button>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <h1 class="cover-heading" data-toggle="tooltip"
+                    data-placement="bottom" title=""
+                    data-original-title="Update blocks length if needed!">
+                    Parameter Adjustments
+                </h1>
+            </div>
+
+            <div class="inner-container">
+                <form class="form-horizontal">
+                    <div class="form-group" id="blockFreqForm">
+                        <label for="blockFreq" class="col-sm-2 control-label">Block Frequency</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="blockFreq" placeholder="Block length" value="128">
+                        </div>
+                    </div>
+                    <div class="form-group" id="nonOverlappingTempForm">
+                        <label for="nonOverlappingTemp" class="col-sm-2 control-label">NonOverlapping Template</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="nonOverlappingTemp" placeholder="Block length" value="9">
+                        </div>
+                    </div>
+                    <div class="form-group" id="overlappingTempForm">
+                        <label for="overlappingTemp" class="col-sm-2 control-label">Overlapping Template</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="overlappingTemp" placeholder="Block length" value="9">
+                        </div>
+                    </div>
+                    <div class="form-group" id="approximateEntropyForm">
+                        <label for="approximateEntropy" class="col-sm-2 control-label">Approximate Entropy</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="approximateEntropy" placeholder="Block length" value="10">
+                        </div>
+                    </div>
+                    <div class="form-group" id="serialTestForm">
+                        <label for="serialTest" class="col-sm-2 control-label">Serial Test</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="serialTest" placeholder="Block length" value="16">
+                        </div>
+                    </div>
+                    <div class="form-group" id="linearComplexityForm">
+                        <label for="linearComplexity" class="col-sm-2 control-label">Linear Complexity</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="linearComplexity" placeholder="Block length" value="500">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p><strong>Created by </strong><a href="https://twitter.com/saski124">@saski124.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="javascripts/fetch.js"></script>
+</body>
+</html>
