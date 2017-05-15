@@ -10,6 +10,8 @@ var fs = require('fs');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var analyze = require('./routes/analyze');
+var about = require('./routes/about');
+var results = require('./routes/results');
 
 var app = express();
 
@@ -28,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/analyze', analyze);
+app.use('/about', about);
+app.use('/analyze/results', results);
 
 app.post('/upload', function (req, res) {
 
